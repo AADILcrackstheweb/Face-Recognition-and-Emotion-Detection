@@ -1,24 +1,10 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[ ]:
-
-
-#!/usr/bin/env python3
 from math import inf as infinity
 from random import choice
 import platform
 import time
 from os import system
 
-"""
-An implementation of Minimax AI Algorithm in Tic Tac Toe,
-using Python.
-This software is available under GPL license.
-Author: Clederson Cruz
-Year: 2017
-License: GNU GENERAL PUBLIC LICENSE (GPL)
-"""
 
 HUMAN = -1
 COMP = +1
@@ -30,11 +16,7 @@ board = [
 
 
 def evaluate(state):
-    """
-    Function to heuristic evaluation of state.
-    :param state: the state of the current board
-    :return: +1 if the computer wins; -1 if the human wins; 0 draw
-    """
+
     if wins(state, COMP):
         score = +1
     elif wins(state, HUMAN):
@@ -97,12 +79,7 @@ def empty_cells(state):
 
 
 def valid_move(x, y):
-    """
-    A move is valid if the chosen cell is empty
-    :param x: X coordinate
-    :param y: Y coordinate
-    :return: True if the board[x][y] is empty
-    """
+
     if [x, y] in empty_cells(board):
         return True
     else:
@@ -110,12 +87,7 @@ def valid_move(x, y):
 
 
 def set_move(x, y, player):
-    """
-    Set the move on board, if the coordinates are valid
-    :param x: X coordinate
-    :param y: Y coordinate
-    :param player: the current player
-    """
+
     if valid_move(x, y):
         board[x][y] = player
         return True
@@ -124,14 +96,7 @@ def set_move(x, y, player):
 
 
 def minimax(state, depth, player):
-    """
-    AI function that choice the best move
-    :param state: current state of the board
-    :param depth: node index in the tree (0 <= depth <= 9),
-    but never nine in this case (see iaturn() function)
-    :param player: an human or a computer
-    :return: a list with [the best row, best col, best score]
-    """
+
     if player == COMP:
         best = [-1, -1, -infinity]
     else:
